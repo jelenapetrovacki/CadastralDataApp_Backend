@@ -20,7 +20,7 @@ public class Korisnik implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="KORISNIK_KORISNIKID_GENERATOR", sequenceName="KORISNIK_SEQ")
+	@SequenceGenerator(name="KORISNIK_KORISNIKID_GENERATOR", sequenceName="KORISNIK_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KORISNIK_KORISNIKID_GENERATOR")
 	private Integer korisnikid;
 

@@ -17,7 +17,7 @@ public class Formab implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="FORMAB_FORMABID_GENERATOR", sequenceName="FORMAB_SEQ")
+	@SequenceGenerator(name="FORMAB_FORMABID_GENERATOR", sequenceName="FORMAB_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FORMAB_FORMABID_GENERATOR")
 	private Integer formabid;
 

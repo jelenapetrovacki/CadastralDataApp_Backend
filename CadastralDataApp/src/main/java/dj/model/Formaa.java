@@ -17,7 +17,7 @@ public class Formaa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="FORMAA_FORMAAID_GENERATOR", sequenceName="FORMAA_SEQ")
+	@SequenceGenerator(name="FORMAA_FORMAAID_GENERATOR", sequenceName="FORMAA_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FORMAA_FORMAAID_GENERATOR")
 	private Integer formaaid;
 
