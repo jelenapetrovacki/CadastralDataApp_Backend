@@ -25,6 +25,7 @@ public class KorisnikRestController {
 	@Autowired
 	private KorisnikRepository korisnikRepository;
 
+	
 
 	@GetMapping("korisnik/{id}")
 	public Korisnik getKorisnikByID(@PathVariable("id") Integer id) {
@@ -33,14 +34,15 @@ public class KorisnikRestController {
 
 	// insert
 	@PostMapping("korisnik")
-	public ResponseEntity<Korisnik> insertorisnik(@RequestBody Korisnik korisnik) {
+	public int insertorisnik(@RequestBody Korisnik korisnik) {
 		System.out.print("pre ifa");
 		if (!korisnikRepository.existsById(korisnik.getKorisnikid())) {
-			korisnikRepository.save(korisnik);
-			System.out.print(korisnik);
-			return new ResponseEntity<Korisnik>(HttpStatus.OK);
+			
+			Korisnik korisnikVracen=korisnikRepository.save(korisnik);
+			System.out.print(korisnikVracen.getKorisnikid());
+			return korisnikVracen.getKorisnikid();
 		}
-		return new ResponseEntity<Korisnik>(HttpStatus.CONFLICT);
+		return 0;
 	}
 
 	// update
