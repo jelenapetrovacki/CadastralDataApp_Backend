@@ -25,7 +25,10 @@ public class KorisnikRestController {
 	@Autowired
 	private KorisnikRepository korisnikRepository;
 
-	
+	@GetMapping("proba")
+	public String getNekiTekst() {
+		return "Radi";
+	}
 
 	@GetMapping("korisnik/{id}")
 	public Korisnik getKorisnikByID(@PathVariable("id") Integer id) {
