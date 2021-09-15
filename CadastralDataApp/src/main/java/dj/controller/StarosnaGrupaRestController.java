@@ -16,7 +16,7 @@ public class StarosnaGrupaRestController {
 	@Autowired
 	private StarosnaGrupaRepository starosnaGrupaRepository;
 	
-	@GetMapping("starosnaGrupa/{id}")
+	@GetMapping("/starosnaGrupa/{id}")
 	public Starosnagrupa getStarosnaGrupaByID(@PathVariable("id") Integer id) {
 		return starosnaGrupaRepository.getOne(id);
 	}
