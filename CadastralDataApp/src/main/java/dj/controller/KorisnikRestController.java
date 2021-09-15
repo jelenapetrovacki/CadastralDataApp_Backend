@@ -30,13 +30,13 @@ public class KorisnikRestController {
 		return "Radi";
 	}
 
-	@GetMapping("korisnik/{id}")
+	@GetMapping("/korisnik/{id}")
 	public Korisnik getKorisnikByID(@PathVariable("id") Integer id) {
 		return korisnikRepository.getOne(id);
 	}
 
 	// insert
-	@PostMapping("korisnik")
+	@PostMapping("/korisnik")
 	public int insertorisnik(@RequestBody Korisnik korisnik) {
 		System.out.print("pre ifa");
 		if (!korisnikRepository.existsById(korisnik.getKorisnikid())) {
@@ -49,7 +49,7 @@ public class KorisnikRestController {
 	}
 
 	// update
-	@PutMapping("korisnik")
+	@PutMapping("/korisnik")
 	public ResponseEntity<Korisnik> updateKorisnik(@RequestBody Korisnik korisnik) {
 		if (!korisnikRepository.existsById(korisnik.getKorisnikid())) {
 			korisnikRepository.save(korisnik);
