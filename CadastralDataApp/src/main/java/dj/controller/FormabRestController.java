@@ -23,7 +23,7 @@ public class FormabRestController {
 	@Autowired
 	private FormabRepository formabRepository;
 	
-	@Autowired
+	
 	private EmailSenderService service;
 
 	@GetMapping("formab")

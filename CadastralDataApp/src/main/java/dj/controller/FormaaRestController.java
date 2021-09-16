@@ -23,7 +23,7 @@ public class FormaaRestController {
 	@Autowired
 	private FormaaRepository formaaRepository;
 
-	@Autowired
+	
 	private EmailSenderService service;
 
 	

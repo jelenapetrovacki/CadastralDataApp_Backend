@@ -26,7 +26,7 @@ public class KorisnikRestController {
 	@Autowired
 	private KorisnikRepository korisnikRepository;
 	
-	@Autowired
+	
 	private EmailSenderService service;
 
 	@GetMapping("/proba")
