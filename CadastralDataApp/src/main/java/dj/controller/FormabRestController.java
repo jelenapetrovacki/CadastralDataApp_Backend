@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dj.EmailSenderService;
 import dj.model.Formab;
 import dj.repository.FormabRepository;
-import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -23,7 +23,7 @@ public class FormabRestController {
 	@Autowired
 	private FormabRepository formabRepository;
 	
-	
+	@Autowired
 	private EmailSenderService service;
 
 	@GetMapping("formab")

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dj.EmailSenderService;
 import dj.model.Formaa;
 import dj.repository.FormaaRepository;
-import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -23,7 +23,7 @@ public class FormaaRestController {
 	@Autowired
 	private FormaaRepository formaaRepository;
 
-	
+	@Autowired
 	private EmailSenderService service;
 
 	

@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dj.EmailSenderService;
 import dj.model.Formab;
 import dj.model.Korisnik;
 import dj.repository.KorisnikRepository;
-import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -26,7 +26,7 @@ public class KorisnikRestController {
 	@Autowired
 	private KorisnikRepository korisnikRepository;
 	
-	
+	@Autowired
 	private EmailSenderService service;
 
 	@GetMapping("/proba")
@@ -40,8 +40,8 @@ public class KorisnikRestController {
 	}
 
 	// insert
-	@PostMapping("/korisnik")
-	public int insertorisnik(@RequestBody Korisnik korisnik) {
+	@PostMapping("korisnik")
+	public int insertKorisnik(@RequestBody Korisnik korisnik) {
 		System.out.print("pre ifa");
 		if (!korisnikRepository.existsById(korisnik.getKorisnikid())) {
 			
