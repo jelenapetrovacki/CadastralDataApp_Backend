@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dj.model.Formab;
 import dj.repository.FormabRepository;
+import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -21,21 +22,30 @@ public class FormabRestController {
 
 	@Autowired
 	private FormabRepository formabRepository;
+	
+	@Autowired
+	private EmailSenderService service;
 
 	@GetMapping("formab")
 	public Collection<Formab> getFormeA() {
 		return formabRepository.findAll();
 	}
 
-	// insert
 	@PostMapping("formab")
 	public ResponseEntity<Formab> insertFormaB(@RequestBody Formab formab) {
 		if (!formabRepository.existsById(formab.getFormabid())) {
-			formabRepository.save(formab);
+			Formab formaBVracena=formabRepository.save(formab);
+			
+			service.sendSimpleEmail("cadastralapp@gmail.com",
+					formaBVracena.toString(),
+					"Forma B - korisnik sa ID-em: "+formaBVracena.getKorisnik().getKorisnikid().toString());
+			
 			return new ResponseEntity<Formab>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Formab>(HttpStatus.CONFLICT);
 	}
+
+
 	//update
 	@PutMapping("formab")
 	public ResponseEntity<Formab> updateFormaB(@RequestBody Formab formab) {

@@ -171,5 +171,13 @@ public class Korisnik implements Serializable {
 	public void setStarosnagrupa(Starosnagrupa starosnagrupa) {
 		this.starosnagrupa = starosnagrupa;
 	}
+	public String toString() {
+			
+			return korisnikid.toString()+","+pol+","+starosnagrupa.getStarosnagrupaid()+
+					", "+iskustvaracunar+", "+brojsati+','+iskustvakatastar+
+					", "+svakodnevnokoriscenje+","+izabranaforma;
+			
+	}
+
 
 }

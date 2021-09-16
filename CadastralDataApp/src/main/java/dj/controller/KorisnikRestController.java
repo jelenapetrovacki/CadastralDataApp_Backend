@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dj.model.Formab;
 import dj.model.Korisnik;
 import dj.repository.KorisnikRepository;
+import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -24,6 +25,9 @@ public class KorisnikRestController {
 
 	@Autowired
 	private KorisnikRepository korisnikRepository;
+	
+	@Autowired
+	private EmailSenderService service;
 
 	@GetMapping("/proba")
 	public String getNekiTekst() {
@@ -43,6 +47,10 @@ public class KorisnikRestController {
 			
 			Korisnik korisnikVracen=korisnikRepository.save(korisnik);
 			System.out.print(korisnikVracen.getKorisnikid());
+			service.sendSimpleEmail("cadastralapp@gmail.com",
+					korisnikVracen.toString(),
+					"Korisnik sa ID-em: "+korisnikVracen.getKorisnikid().toString());
+
 			return korisnikVracen.getKorisnikid();
 		}
 		return 0;

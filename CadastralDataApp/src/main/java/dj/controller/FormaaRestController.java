@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dj.model.Formaa;
 import dj.repository.FormaaRepository;
+import dj.services.EmailSenderService;
 
 @CrossOrigin
 @RestController
@@ -22,6 +23,10 @@ public class FormaaRestController {
 	@Autowired
 	private FormaaRepository formaaRepository;
 
+	@Autowired
+	private EmailSenderService service;
+
+	
 	@GetMapping("formaa")
 	public Collection<Formaa> getFormeA() {
 		return formaaRepository.findAll();
@@ -29,13 +34,25 @@ public class FormaaRestController {
 
 	// insert
 	@PostMapping("formaa")
-	public ResponseEntity<Formaa> insertFormaA(@RequestBody Formaa formaa) {
+	public Formaa insertFormaA(@RequestBody Formaa formaa) {
 		if (!formaaRepository.existsById(formaa.getFormaaid())) {
-			formaaRepository.save(formaa);
-			return new ResponseEntity<Formaa>(HttpStatus.OK);
+			System.out.println("ovo");
+			System.out.println(formaa.getKultura());
+			System.out.println("ovo"+formaa.getKorisnik());
+			Formaa formaAVracena = formaaRepository.save(formaa);
+			//System.out.println(formaAVracena.getKorisnik().getKorisnikid());
+			
+			service.sendSimpleEmail("cadastralapp@gmail.com",
+					formaAVracena.toString(),
+					"Forma A - korisnik sa ID-em: "
+								+formaAVracena.getKorisnik().getKorisnikid().toString());
+
+			
+			return formaAVracena;
 		}
-		return new ResponseEntity<Formaa>(HttpStatus.CONFLICT);
+		return null;
 	}
+
 	//update
 	@PutMapping("formaa")
 	public ResponseEntity<Formaa> updateFormaA(@RequestBody Formaa formaa) {

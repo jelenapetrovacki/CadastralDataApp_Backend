@@ -324,5 +324,16 @@ public class Formab implements Serializable {
 	public void setKorisnik(Korisnik korisnik) {
 		this.korisnik = korisnik;
 	}
+	public String toString() {
+			
+				return formabid + ", " + brlistanepokretnosti+", "+mbropstine+", "+opstina+
+		", "+mbrkatastarskeopstine+", "+katastarskaopstina+", "+datumazurnosti+", "+sluzba+
+		", "+ulica+", "+brparcele+", "+podbrparcele+", "+povrsina+", "+brdela+", "+vrstazemljista+
+		", "+kultura+", "+povrsinadela+", "+vlasnik1+", "+vrstaprava1+", "+obliksvojine1+
+		", "+udeo1+", "+vlasnik2+", "+vrstaprava2+", "+obliksvojine2+", "+udeo2+
+		", "+vremepopunjavanja+", "+greska+", "+redosled+", "+laksepopunjavanje+
+		", "+vizuelniutisak+", "+korisnik.getKorisnikid();
+			
+		}
 
 }
